@@ -1,0 +1,27 @@
+Stack Identification:
+---------------------
+1. Problem is on arrays/string.
+    Most of Array or string questions can be worked with arrays or heaps
+    Heaps -> gives the feeling of sorting in some form, highest/lowest type
+    Stack -> Could be used
+2. Brute force algo could be used and the complexity would be O(n2).
+    for (int i=0; i< n; i++){
+        for (int j=0; j<i; j++){
+            // Calculations;
+        }
+    }
+    the j'th loop is dependent on i'th loop.
+    It could be in any direction, like
+    j=0; j<n; j++       // j -> 0 to n; j++
+    j=0; j<i; j++       // j -> 0 to i; j++
+    j=i; j>0; j--       // j -> i to 0; j--
+    j=i; j>n; j++       // j -> i to n; j++
+    j=n; j>i; j++       // j -> n to i; j--
+
+    In this case; 100% stack can be used;
+
+# Iterate:
+# xxx -> Highest or Lowest
+# Right to Left: if need to find next xxx element to the right
+# Left to Right: if need to find next xxx element to the left
+#

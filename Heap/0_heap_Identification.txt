@@ -1,0 +1,21 @@
+Identification:
+----------------
+1. K -> some integer value
+2. Smallest/ largest
+We get the feeling of sorting to get to the answer.
+
+Example:
+return 3rd largest element -> k = 3, largest
+Top 2nd frequency number -> k = 2, max frequency
+
+k + smallest => Max heap; Max elements on top; we can remove top elements k times to get k smallest element
+k + largest => Min heap; Min elements on top; we can remove top K smaller elements to get the kth largest element;
+
+k and smallest/largest
+k and max/min
+nlogn -> nlogk Improve the efficiency from nlog(n) to nlog(k)
+
+
+We can solve these questions by sorting.
+If we sort, it will take nlog(n) time complexity;
+Since we need to take care of only k elements, we can use heap and the complexity will be n*log(k)

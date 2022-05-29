@@ -1,0 +1,48 @@
+1. Find what calculations are to be made
+2. do the calculations and get the answer
+3. Slide the window
+
+Till we have not reached array size
+    1. perform the calculation
+    if window size is not reached K
+        just keep performing the calculation
+    else: # reached the window size
+        a. GET RESILTS by use the calculation performed
+        b. Decrement the 1st index from window size
+        c. increment both left and right pointer
+    return the result
+
+Solution template:
+
+Fixed window size:
+------------------
+i = 0
+j = 0
+while j < len(arr):
+    #do calculations
+    if current_window_size < K:  # < current_window_size = j-i+1; k = given window size
+        j++
+    if current_window_size == k  :# < current_window_size = j-i+1;
+        # answer <- computation
+        # remove i from calculations
+        # slide the window; window size is maintained
+    
+return the answer
+
+
+Variable length window size:
+----------------------------
+i = 0
+j = 0
+while j < len(arr):
+    do calculations
+
+    if condition < k:  # Given condition which will be passed as argument
+        # no nothing
+    elif condition == k:
+        answer <- computation
+    elif condition > k:
+        while condition > k:
+            remove item from ith index
+            i++
+    j++

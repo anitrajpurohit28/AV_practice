@@ -1,0 +1,10 @@
+Recursion:
+1. Make the input smaller
+    Base condition
+    Induction
+    Hypothesis
+
+2. Input-Output method:
+    Make a decision tree
+
+3. Decision Table
