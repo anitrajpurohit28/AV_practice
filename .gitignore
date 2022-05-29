@@ -1,2 +1,4 @@
 .DS_Store
 .DP_Aditya_verma_videos
+__pycache__/
+*.py[cod]

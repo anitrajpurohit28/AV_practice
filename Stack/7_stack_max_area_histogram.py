@@ -119,7 +119,7 @@ def nearest_smallest_index_to_right(arr: list):
     logging.info("Output is: [%s]", output_index_list)
     return output_index_list
 
-def max_ares_of_histogram_NSR_NSL(arr: list):
+def max_area_of_histogram_NSR_NSL(arr: list):
     max_NSR = nearest_smallest_index_to_right(arr)
     max_NSL = nearest_smallest_index_to_left(arr)
 
@@ -149,7 +149,7 @@ def max_ares_of_histogram_NSR_NSL(arr: list):
 
 
 # input_arr = [6, 2, 5, 4, 5, 1, 6]
-# max_ares_of_histogram_NSR_NSL(input_arr)
+# max_area_of_histogram_NSR_NSL(input_arr)
 
 
 
@@ -239,43 +239,43 @@ def max_area_of_histogram_stack(a: list):
     return area
 
 a = [6, 2, 5, 4, 5, 1, 6]
-res = max_ares_of_histogram_NSR_NSL(a)
-print('max_ares_of_histogram_NSR_NSL:', res)
+res = max_area_of_histogram_NSR_NSL(a)
+print('max_area_of_histogram_NSR_NSL:', res)
 
-a = [2, 1, 2, 3, 1]
-res = max_ares_of_histogram_NSR_NSL(a)
-print('max_ares_of_histogram_NSR_NSL:', res)
+# a = [2, 1, 2, 3, 1]
+# res = max_area_of_histogram_NSR_NSL(a)
+# print('max_area_of_histogram_NSR_NSL:', res)
 
-a = [1, 2, 4, 0, 2, 3, 2]
-res = max_ares_of_histogram_NSR_NSL(a)
-print('max_ares_of_histogram_NSR_NSL:', res)
+# a = [1, 2, 4, 0, 2, 3, 2]
+# res = max_area_of_histogram_NSR_NSL(a)
+# print('max_area_of_histogram_NSR_NSL:', res)
 
-a = [1, 2, 4]
-res = max_ares_of_histogram_NSR_NSL(a)
-print('max_ares_of_histogram_NSR_NSL:', res)
+# a = [1, 2, 4]
+# res = max_area_of_histogram_NSR_NSL(a)
+# print('max_area_of_histogram_NSR_NSL:', res)
 
-a = [1, 2, 3, 4, 5]
-res = max_ares_of_histogram_NSR_NSL(a)
-print('max_ares_of_histogram_NSR_NSL:', res)
+# a = [1, 2, 3, 4, 5]
+# res = max_area_of_histogram_NSR_NSL(a)
+# print('max_area_of_histogram_NSR_NSL:', res)
 
 #===============
 
-a = [6, 2, 5, 4, 5, 1, 6]
-res = max_area_of_histogram_stack(a)
-print('max_area_of_histogram_stack:', res)
+# a = [6, 2, 5, 4, 5, 1, 6]
+# res = max_area_of_histogram_stack(a)
+# print('max_area_of_histogram_stack:', res)
 
-a = [2, 1, 2, 3, 1]
-res = max_area_of_histogram_stack(a)
-print('max_area_of_histogram_stack:', res)
+# a = [2, 1, 2, 3, 1]
+# res = max_area_of_histogram_stack(a)
+# print('max_area_of_histogram_stack:', res)
 
-a = [1, 2, 4, 0, 2, 3, 2]
-res = max_area_of_histogram_stack(a)
-print('max_area_of_histogram_stack:', res)
+# a = [1, 2, 4, 0, 2, 3, 2]
+# res = max_area_of_histogram_stack(a)
+# print('max_area_of_histogram_stack:', res)
 
-a = [1, 2, 4]
-res = max_area_of_histogram_stack(a)
-print('max_area_of_histogram_stack:', res)
+# a = [1, 2, 4]
+# res = max_area_of_histogram_stack(a)
+# print('max_area_of_histogram_stack:', res)
 
-a = [1, 2, 3, 4, 5]
-res = max_area_of_histogram_stack(a)
-print('max_area_of_histogram_stack:', res)
+# a = [1, 2, 3, 4, 5]
+# res = max_area_of_histogram_stack(a)
+# print('max_area_of_histogram_stack:', res)

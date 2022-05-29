@@ -22,7 +22,7 @@ class stack_impl:
         self.s = []  # stack
         self.ss = []  # supporting stack
 
-    def stack_push(self, item):
+    def _stack_push(self, item):
         # Push the element to the stack; We need to do this irrespective
         self.s.append(item)
         # check if element is smaller than supporting_stack[top], if so,
@@ -38,14 +38,19 @@ class stack_impl:
             self.ss.append(item)
         logging.debug("item: %s; s: %s; ss: %s", item, self.s, self.ss)
 
+    def stack_push(self, item):  # redefined the above function for alternative approach
+        self.s.append(item)
+        if not self.ss or self.ss[-1]>=item:
+            self.ss.append(item)
+
     def stack_pop(self):
         # sanity check on main stack. If the main stack is empty,
         # supporting stack MUST be empty too. Just return
-        if len(self.s) == 0:
+        if not self.s:
             logging.debug("Empty list")
             return
         # we'll need to pop from main stack irrespective
-        popped = self.s.pop(-1)
+        popped = self.s.pop()
 
         # if the popped element is on top of supporting stack, pop it from
         # supporting stack too.
@@ -57,12 +62,13 @@ class stack_impl:
         return popped
 
     def stack_min(self):
-        # top of the supporting stack will alway have the minimum element
+        # top of the supporting stack will always have the minimum element
         logging.debug("s: %s; ss: %s", self.s, self.ss)
-        if len(self.ss) == 0:
+        if not self.ss:
             logging.debug("Stack empty")
             return
         return self.ss[-1]
+
     def stack_display(self):
         logging.debug("s: %s; ss: %s", self.s, self.ss)
 

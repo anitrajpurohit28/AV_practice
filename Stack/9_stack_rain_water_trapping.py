@@ -6,13 +6,14 @@ Logic:
     Water at any block would be minimum of maximum water collectable
     on left side and on right side minus the size of building itself
     water at arr[index] = min(max_left, max_right) - height of building
-
 """
+
 def populate_max_left(arr: list):
     """
     maximum value of index from left.
     initilize the all the values of max_left list to 0
-    iterate from left to right. If current value is greater than max
+    iterate from left to right.
+    If current value > max
         max = current value
     store the max value at current index.
     """
@@ -20,7 +21,7 @@ def populate_max_left(arr: list):
     maximum = 0
     for index, item in enumerate(arr):
         if item > maximum:
-            # if current item is greater then current max, reassign max
+            # if current item is greater then current max, re-assign max
             maximum = item
         max_left[index] = maximum
     return max_left
@@ -56,7 +57,7 @@ def water_trapping(arr: list):
 
     for index in range(len(arr)):
         water_at_index[index] = min(max_left_array[index], max_right_array[index]) - arr[index]
-        logging.debug("Water at index %s: %s; so far: %s", index, water_at_index[index], water_at_index)
+        # logging.debug("Water at index %s: %s; so far: %s", index, water_at_index[index], water_at_index)
     logging.debug(water_at_index)
     return water_at_index
 
