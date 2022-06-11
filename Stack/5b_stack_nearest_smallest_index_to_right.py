@@ -83,20 +83,15 @@ def nearest_smallest_index_to_right(arr: list):
     # Since we are reversing after enumeration, it'll start from last index only
     for index, element in reversed(list(enumerate(arr))):
         logger.debug('index: %s; element: %s; stack: %s', index, element, stack)
+        while stack and stack[-1][1] >= element:
+            logger.debug('Stack[top]: %s is greater; pop it', stack[-1])
+            stack.pop()
         if not stack:
-            logger.debug('Stack is empty; appending -1')
+            logger.debug('Stack is empty after popping. append -1')
             op.append(-1)
         else:
-            while stack and stack[-1][1] >= element:
-                logger.debug('Stack[top]: %s is greater; pop it', stack[-1])
-                stack.pop()
-
-            if not stack:
-                logger.debug('Stack is empty after popping. append -1')
-                op.append(-1)
-            else:
-                logger.debug('Stack[top] %s is smaller; append index %s', stack[-1], stack[-1][0])
-                op.append(stack[-1][0])
+            logger.debug('Stack[top] %s is smaller; append index %s', stack[-1], stack[-1][0])
+            op.append(stack[-1][0])
         logger.debug('Appending %s to stack', (index,element))
         stack.append((index, element))
     return op[::-1]

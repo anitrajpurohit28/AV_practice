@@ -76,16 +76,12 @@ def nearest_smallest_index_to_left(arr: list):
     stack = []
     op = []
     for index, element in enumerate(arr):
+        while stack and stack[-1][1] >= element:
+            stack.pop()
         if not stack:
             op.append(-1)
         else:
-            while stack and stack[-1][1] >= element:
-                stack.pop()
-
-            if not stack:
-                op.append(-1)
-            else:
-                op.append(stack[-1][0])
+            op.append(stack[-1][0])
         stack.append((index, element))
     return op
 

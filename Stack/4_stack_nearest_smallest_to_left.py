@@ -36,6 +36,19 @@
 #
 from my_logger import get_my_logger
 
+def nearest_smallest_to_left(arr: list):
+    stack = []
+    op = []
+    for element in arr:
+        while stack and stack[-1] >= element:
+            stack.pop()
+        if not stack:
+            op.append(-1)
+        else:
+            op.append(stack[-1])
+        stack.append(element)
+    return op
+
 def nearest_smallest_to_left_inefficient(arr: list):
     logger = get_my_logger(50)
     logger.debug("Input array: %s", arr)
@@ -78,21 +91,7 @@ def nearest_smallest_to_left_inefficient(arr: list):
     logger.info("Output is: [%s]", output_list)
     return output_list
 
-def nearest_smallest_to_left(arr: list):
-    stack = []
-    op = []
-    for element in arr:
-        if not stack:
-            op.append(-1)
-        else:
-            while stack and stack[-1] >= element:
-                stack.pop()
-            if not stack:
-                op.append(-1)
-            else:
-                op.append(stack[-1])
-        stack.append(element)
-    return op
+
 
 
 a1 = [1, 3, 2, 4]

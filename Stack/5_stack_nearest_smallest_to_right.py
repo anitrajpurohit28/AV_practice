@@ -39,6 +39,19 @@
 from my_logger import get_my_logger
 
 def nearest_smallest_to_right(arr: list):
+    stack = []
+    op = []
+    for element in arr[::-1]:
+        while stack and stack[-1] >= element:
+            stack.pop()
+        if not stack:
+            op.append(-1)
+        else:
+            op.append(stack[-1])
+        stack.append(element)
+    return op[::-1]
+
+def nearest_smallest_to_right_inefficient(arr: list):
     logger = get_my_logger(50)
     logger.debug("Input array: %s", arr)
     output_list = []    # Will be used to store the results
@@ -82,22 +95,6 @@ def nearest_smallest_to_right(arr: list):
     output_list = output_list[::-1]
     logger.info("Output is: [%s]", output_list)
     return output_list
-
-def nearest_smallest_to_right(arr: list):
-    stack = []
-    op = []
-    for element in arr[::-1]:
-        if not stack:
-            op.append(-1)
-        else:
-            while stack and stack[-1] >= element:
-                stack.pop()
-            if not stack:
-                op.append(-1)
-            else:
-                op.append(stack[-1])
-        stack.append(element)
-    return op[::-1]
 
 a1 = [1, 3, 2, 4]
 res = nearest_smallest_to_right(a1)
