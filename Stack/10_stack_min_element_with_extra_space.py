@@ -22,7 +22,12 @@ class stack_impl:
         self.s = []  # stack
         self.ss = []  # supporting stack
 
-    def _stack_push(self, item):
+    def stack_push(self, item):  # redefined the above function for alternative approach
+        self.s.append(item)
+        if not self.ss or self.ss[-1]>=item:
+            self.ss.append(item)
+
+    def _stack_push_inefficient(self, item):
         # Push the element to the stack; We need to do this irrespective
         self.s.append(item)
         # check if element is smaller than supporting_stack[top], if so,
@@ -37,11 +42,6 @@ class stack_impl:
             # if the element is smaller, push on to supporting stack as well
             self.ss.append(item)
         logging.debug("item: %s; s: %s; ss: %s", item, self.s, self.ss)
-
-    def stack_push(self, item):  # redefined the above function for alternative approach
-        self.s.append(item)
-        if not self.ss or self.ss[-1]>=item:
-            self.ss.append(item)
 
     def stack_pop(self):
         # sanity check on main stack. If the main stack is empty,

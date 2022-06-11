@@ -30,7 +30,7 @@ def nearest_smallest_index_to_right(arr: list):
     for index, element in reversed(list(enumerate(arr))):
         logger.debug('index: %s; element: %s; stack: %s', index, element, stack)
         if not stack:
-            logger.debug('Stack is empty; appending -1')
+            logger.debug('Stack is empty; appending len of arr')
             op.append(len(arr))
         else:
             while stack and stack[-1][1] >= element:
@@ -45,7 +45,25 @@ def nearest_smallest_index_to_right(arr: list):
                 op.append(stack[-1][0])
         logger.debug('Appending %s to stack', (index,element))
         stack.append((index, element))
+    # since we are using stack "append", we'll have to reverse the array
     return op[::-1]
+
+def _nearest_smallest_index_to_right(arr):
+    stack = []
+    nsr = [len(arr)]*len(arr)  # this is different from above method;
+    for index, item in reversed(list(enumerate(arr))):
+        if not stack:
+            nsr[index] = len(arr)
+        else:
+            while stack and stack[-1][1] >= item:
+                stack.pop()
+            if not stack:
+                nsr[index] = len(arr)
+            else:
+                nsr[index] = stack[-1][0]
+        stack.append((index, item))
+    # We are assigning based on index and thus no reversal is required.
+    return nsr
 
 def max_area_of_histogram_NSR_NSL(a):
     logger = get_my_logger()
@@ -63,6 +81,7 @@ def max_area_of_histogram_NSR_NSL(a):
                 nsl_array, width_array, histogram_area)
     return max(histogram_area)
 
-a = [6, 2, 5, 4, 5, 1, 6]
+# a = [6, 2, 5, 4, 5, 1, 6]
+a = [2,1,5,6,2,3]
 res = max_area_of_histogram_NSR_NSL(a)
 print('max_area_of_histogram_NSR_NSL:', res)

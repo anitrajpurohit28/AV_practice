@@ -24,7 +24,7 @@
 
 from my_logger import get_my_logger
 
-def nearest_smallest_index_to_right(arr: list):
+def nearest_smallest_index_to_right_inefficient(arr: list):
     logger = get_my_logger(50)
     logger.debug("Input array: %s", arr)
     output_index_list = []    # Will be used to store the results

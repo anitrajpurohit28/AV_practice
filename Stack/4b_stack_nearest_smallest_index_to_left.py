@@ -29,7 +29,7 @@
 #
 from my_logger import get_my_logger
 
-def nearest_smallest_index_to_left(arr: list):
+def nearest_smallest_index_to_left_inefficient(arr: list):
     logger = get_my_logger(10)
     logger.debug("Input array: %s", arr)
     output_index_list = []    # Will be used to store the resultant indices

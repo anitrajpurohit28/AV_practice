@@ -47,7 +47,7 @@ from my_logger import get_my_logger
 # logger.addHandler(console_handler)
 
 
-def nearest_greatest_to_right(arr: list):
+def nearest_greatest_to_right_inefficient(arr: list):
     logger = get_my_logger(10)
     logger.debug("Input array: %s", arr)
     output_list = []    # Will be used to store the results
