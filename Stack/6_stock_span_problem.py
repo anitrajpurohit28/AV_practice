@@ -26,11 +26,35 @@
 
 from my_logger import get_my_logger
 
+# This is similar to Nearest Greatest element's index to Left problem
 def stock_span_problem(arr: list):
+    stack = []  # (index, item)
+    op = []
+
+    for index, item in enumerate(arr):
+        while stack and stack[-1][1] <= item:
+            stack.pop()
+
+        if not stack:
+            # this can happend when current element is greatest in the stack and thus
+            # all the elements are popped out of stack. So, current index is to be pushed
+            # Mind +1 as the indices are 0 based numbered.
+            # When stack is all empty, there is no element greater to left. We can append "0"
+            # but we need to consider current element too. Thus counting the current element,
+            # the output should be 1
+            op.append(index+1)
+        else:
+            # No need to add +1 here as all the elements pushed in stack are also 0 based numbers.
+            op.append(index - stack[-1][0])
+        stack.append((index,item))
+    return op
+
+
+def stock_span_problem_inefficient(arr: list):
     """
         If we observe carefully enough, this problem is similar to Nearest Greatest element to Left problem
     """
-    logger = get_my_logger(10)
+    logger = get_my_logger(50)
     stack = []
     output_list = []
 
@@ -58,7 +82,8 @@ def stock_span_problem(arr: list):
                 # insert current index +1 to stack; +1 because it is 0 indexed array
                 # Current index because, no item to left is greater.
                 logger.debug("Stack is all empty. Append current index+1: %s, to output", index+1)
-                output_list.append(index+1)  # current index + 1
+                output_list.append(index+1)  # current index + 1 because we need to consider current index too and
+                                             # it is 0 based index
             else:
                 # We found an element, on stack which is greater than current element
                 # current index would be more as previous elements are pushed onto stack
@@ -75,45 +100,28 @@ def stock_span_problem(arr: list):
     return output_list
 
 
-# This is similar to Nearest Greatest element to Left problem
-def _stock_span_problem(arr: list):
-    stack = []  # (index, item)
-    op = []
-
-    for index, item in enumerate(arr):
-        if not stack:
-            # this can happend for very 1st element
-            op.append(1)
-        else:
-            while stack and stack[-1][1] <= item:
-                stack.pop()
-
-            if not stack:
-                # this can happend when current element is greatest in the stack and thus
-                # all the elements are popped out of stack. So, current index is to be pushed
-                # Mind +1 as the indices are 0 based numbered.
-                op.append(index+1)
-            else:
-                # No need to add +1 here as all the elements pushed in stack are also 0 based numbers.
-                op.append(index - stack[-1][0])
-        stack.append((index,item))
-    return op
 
 
 # a1 = [100, 80, 60, 70, 60, 75, 85]
-# a1 = [74, 665, 742, 512, 254, 469, 748, 445]
 # print(a1)
 # res = stock_span_problem(a1)
 # print(res)
+# print("---")
 
-print("---")
+# a2 = [74, 665, 742, 512, 254, 469, 748, 445]
+# print(a2)
+# res = stock_span_problem(a2)
+# print(res)
+# print("---")
+
 a2 = [74, 665, 742, 512, 254, 469, 748, 445, 663, 758, 38, 60, 724, 142, 330, 779, 317, 636, 591, 243, 289, 507, 241, 143, 65, 249, 247, 606, 691, 330, 371, 151, 607, 702, 394, 349, 430, 624, 85, 755, 357, 641, 167, 177, 332, 709, 145, 440, 627, 124, 738, 739, 119, 483, 530, 542, 34, 716, 640, 59, 305, 331, 378, 707, 474, 787, 222, 746, 525, 673, 671, 230, 378, 374, 298, 513, 787, 491, 362, 237, 756, 768, 456, 375, 32, 53, 151, 351, 142, 125, 367, 231, 708, 592, 408, 138, 258, 288, 554, 784, 546, 110, 210, 159, 222, 189, 23, 147, 307, 231, 414, 369, 101, 592, 363, 56, 611, 760, 425, 538, 749, 84, 396, 42, 403, 351, 692, 437, 575, 621, 597, 22, 149, 800]
-print(a2)
-print("---")
+# print(a2)
+# print("---")
 res = stock_span_problem(a2)
 print(res)
+print("---")
 
-# print("---")
-# a3 = [74, 665, 742, 512, 254, 469, 748, 445, 663, 758, 38, 60, 724, 142, 330, 779, 317, 636, 591, 243, 289, 507, 241, 143, 65, 249, 247, 606, 691, 330, 371, 151, 607, 702, 394, 349, 430, 624, 85, 755, 357, 641, 167, 177, 332, 709, 145, 440, 627, 124, 738, 739, 119, 483, 530, 542, 34, 716, 640, 59, 305, 331, 378, 707, 474, 787, 222, 746, 525, 673, 671, 230, 378, 374, 298, 513, 787, 491]
-# res = stock_span_problem(a3)
-# print(res)
+
+a3 = [74, 665, 742, 512, 254, 469, 748, 445, 663, 758, 38, 60, 724, 142, 330, 779, 317, 636, 591, 243, 289, 507, 241, 143, 65, 249, 247, 606, 691, 330, 371, 151, 607, 702, 394, 349, 430, 624, 85, 755, 357, 641, 167, 177, 332, 709, 145, 440, 627, 124, 738, 739, 119, 483, 530, 542, 34, 716, 640, 59, 305, 331, 378, 707, 474, 787, 222, 746, 525, 673, 671, 230, 378, 374, 298, 513, 787, 491]
+res = stock_span_problem(a3)
+print(res)
