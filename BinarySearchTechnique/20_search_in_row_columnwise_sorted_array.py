@@ -5,13 +5,18 @@ def search_in_row_columnwise_sorted_array(arr, item):
     """ Search for an element in 2D row wise sorted and column wise
         sorted array
         Logic:
-            Start from top right corner. If the current element is the
-            item to be searched for is current item,
-                return the row, column index
-            If current element(i, j) is greater than item,
-                move left of column index
-            If current element(i, j) is lesser then item,
-                move down of row index
+            Start from top right corner
+                If the item to be searched for is current item,
+                    return the row, column index
+                If current element(i, j) is greater than item,
+                    move down of row index
+                If current element(i, j) is lesser then item,
+                    move left of column index
+        [10, 20, 30, 40]
+        [15, 25, 35, 45]
+        [27, 29, 37, 48]
+        [29, 31, 38, 49]
+        [32, 33, 39, 50]
     """
     col_len = len(arr[0])
     row_len = len(arr)

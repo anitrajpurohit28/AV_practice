@@ -29,7 +29,7 @@ def peak_element_in_given_array(arr):
 
     Logic:
         For non-edge elements
-            if element is greater than right and left elements, 
+            if element is greater than right and left elements,
                 return a[mid]
             else
                 Move towards element greater than current element
@@ -38,7 +38,6 @@ def peak_element_in_given_array(arr):
                 if yes, return it as peak
             for last element, check if its greatern than last but one element
                 if yes, return it as peak
-        
         return "No peak"
     """
     low = 0
@@ -49,7 +48,7 @@ def peak_element_in_given_array(arr):
         # check for non edge elements
         if mid > 0 and mid < len(arr)-1:
             # check if element is greater than both of its neighbour
-            logging.debug('None edge condition')
+            logging.debug('Not an edge condition')
             if arr[mid-1] < arr[mid] > arr[mid+1]:
                 # this element is greater than both of its neighbout
                 logging.debug('%s is greater than both of its neighbour'

@@ -8,7 +8,7 @@ def first_one_in_infinity_sorted_binary_array(arr):
         For infinity binary sorted array, we can't apply BS as we don't have
         high index.
         We'll check the range in which first 1 could be found by increasing
-        the range by 2 for every cycle.
+        the range by doubling for every cycle.
 
         Once we find the range, we need to apply BS such that
             if a[mid-1] == 0 and a[mid] == 1:
@@ -67,6 +67,7 @@ def first_one_in_infinity_sorted_binary_array(arr):
     #   Search in right(bigger element) array
     # by now, the main condition would have turned fase as low and high index
     # would have merged. The element in result would be the first 1
+    """
     res = -1
     while low <= high:
         mid = low + (high-low)//2
@@ -76,6 +77,7 @@ def first_one_in_infinity_sorted_binary_array(arr):
         else: #arr[mid] == 0:
             low = mid + 1
     return res
+    """
 
 arr = [1, 1, 1, 1, 1]
 res = first_one_in_infinity_sorted_binary_array(arr)

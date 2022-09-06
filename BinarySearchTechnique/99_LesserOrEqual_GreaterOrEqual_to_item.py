@@ -1,7 +1,9 @@
-#Given a sorted array Arr of size N and a value X, find the number of array elements less than or equal to X and elements more than or equal to X
+# Given a sorted array Arr of size N and a value X,
+# find the number of array elements
+# A. less than or equal to X and
+# B. greater than or equal to X
 import logging
 logging.basicConfig(level=logging.DEBUG)
-
 
 class Solution:
     def getMore(self, arr, n, item):
@@ -16,7 +18,7 @@ class Solution:
                 store the result in temp element as this could be potential result
                 keep searcihng on right array
             if item is lesser than current mid
-                More towards left array
+                Move towards left array
             final_result = size - temp_result   => In case we find the exact match
             OR
             final_result = size - (temp_result + 1) => If we don't find he exact match
@@ -49,10 +51,18 @@ class Solution:
 
         # By now, we would have the potential solution stored in result
         if arr[result] == item or mid == 0:
+            # Explaination 1: (better)
+            # if the exact item is found in arr[result], just return "n-result"
+            # size - result would have discounted the current element too so, ideally, we should be
+            # adding +1 to take account of the current item but we need not do that as the index of
+            # array is starting from 0, 1st element of the array is discounted. 1st discounted element
+            # will equilizes the current element to be considered.
+
+            # Explaination 2:
             # if the exact item is found in arr[result], just return "n-result" instead of "n-(result+1)"
             # because, current element is equal it item and we must count this too; After doing -1, we'll
-            # be pointing to element left of the result, Now we need to discount the element from start to 
-            # left of result;
+            # be pointing to element left of the result,
+            # Now we need to discount the element from start to left of result;
             # AND
             # in case the element is lesser than first element, the size of array is the answer; In this case
             # result will be 0; size - 0 = size of array
@@ -71,9 +81,9 @@ class Solution:
         Apply BS such that;
             if element is found:
                 store the mid in temp_result as this is potential solution
-                Continue searching on right array as we need to consider tall the element that are equal and 
-                    are on right array
-            if item is greater than array[mid]
+                Continue searching on right array as we need to consider till the element that
+                    are equal and are on right array
+            if item is greater than array[mid]:
                 meaning arr[mid] is lesser than item and is potential candidate; store in temp_result
                 keep searching on right array for duplicates, if any
             else:
@@ -95,7 +105,7 @@ class Solution:
                 low = mid + 1
             else:
                 high = mid - 1
-        # return result + 1 because index are starting with 0 and not 1
+        # return result + 1 because index is starting with 0 and not 1
         logging.info('getLess: index from where elements are lesser: [%s];', result+1)
         return result+1
 

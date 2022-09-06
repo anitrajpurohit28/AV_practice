@@ -87,7 +87,7 @@ def search_in_bitonic_array(arr, item):
             #       it cannot be a bitonic array
             # if Peak is found,
             #       This is either ascending or descending
-            #        sorted array; Don't need to divide in 2
+            #       sorted array; Don't need to divide in 2
             logging.debug('Edge condition')
             if mid == 0 and arr[mid] > arr[mid+1]:
                 # this is an descending sorted array
@@ -95,14 +95,14 @@ def search_in_bitonic_array(arr, item):
                 arr2 = arr[:]
                 break
                 # OR
-                #return binary_search(arr, item, "des")
+                #return binary_search(arr2, item, "des")
             elif mid == len(arr)-1 and arr[mid] > arr[mid-1]:
                 # This is ascending sorted array
                 arr1 = arr[:]
                 arr2 = []
                 break
                 # OR
-                #return binary_search(arr, item, "asc")
+                #return binary_search(arr1, item, "asc")
             else:
                 logging.error('This is NOT a bitonic array')
                 # This is NOT a bitonic array
@@ -114,7 +114,7 @@ def search_in_bitonic_array(arr, item):
         logging.info('Given array does not look like bitonic array')
         return -1
 
-    # The array is divided into two parts; 
+    # The array is divided into two parts;
     # array1: ascending sorted
     # array2: descending sorted;
     # we need to find the requested item in these two arrays using BS.
